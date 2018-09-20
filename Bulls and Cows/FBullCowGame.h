@@ -1,10 +1,5 @@
 #pragma once
-#include <string>
-#include <set>
-#define TSet std::set
-
-using FString = std::string;
-using int32 = int;
+#include "UnrealStructures.h"
 
 struct FBullCowCount
 {
