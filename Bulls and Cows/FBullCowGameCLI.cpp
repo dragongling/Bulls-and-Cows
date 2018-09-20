@@ -4,14 +4,13 @@
 void FBullCowGameCLI::StartMainGameLoop()
 {
 	bPlayAgain = false;
-	//TODO::Read words file
 	if (!Dictionary.ReadFromFile(DICTIONARY_PATH))
 	{
 		std::cout << "Error: file \"" << DICTIONARY_PATH << "\" not found." << std::endl;
 		return;
 	}
-	do {
-		PrintIntro();
+	PrintIntro();
+	do {		
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();
 	} while (bPlayAgain);
@@ -21,13 +20,30 @@ void FBullCowGameCLI::PrintIntro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game!\n";
 	std::cout << std::endl;
-	std::cout << 
+	PrintASCIIArt();
+	std::cout << std::endl;
+	PrintRules();
+	std::cout << std::endl;
+}
+
+void FBullCowGameCLI::PrintASCIIArt()
+{
+	std::cout <<
 		"          }   {         ___            \n"
 		"          (o o)        (o o)           \n"
 		"   /-------\\ /          \\ /-------\\ \n"
 		"  / | BULL |O            O| COW  | \\  \n"
 		" *  |-,--- |              |------|  *  \n"
-		"    ^      ^              ^      ^     \n"
+		"    ^      ^              ^      ^     "
+		<< std::endl;
+}
+
+void FBullCowGameCLI::PrintRules()
+{
+	std::cout <<
+		"In this game, a bull is the correct letter in the correct position.\n"
+		"A cow is the correct letter, but in the wrong position in the word.\n"
+		"An isogram is a word with no more than one of each letter in it."
 		<< std::endl;
 }
 
@@ -35,8 +51,8 @@ void FBullCowGameCLI::PlayGame()
 {
 	std::random_device rd;
 	std::default_random_engine re(rd());
-	HiddenWord = Dictionary.GetRandomWord(re, 7);
-	std::cout << HiddenWord << std::endl;
+	HiddenWord = Dictionary.GetRandomWord(re, 4);
+	//std::cout << HiddenWord << std::endl; // Debugging only
 	BCGame.Reset(HiddenWord);
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n" << std::endl;
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= BCGame.GetMaxTries())

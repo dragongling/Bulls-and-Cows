@@ -9,6 +9,9 @@ struct FBullCowCount
 enum class EGuessStatus { OK, NotIsogram, WrongLength, RepeatingGuess };
 enum class EResetStatus { OK, NoHiddenWord };
 
+/**
+ * Game logic for "Bulls and Cows" game
+ */
 class FBullCowGame
 {
 public:

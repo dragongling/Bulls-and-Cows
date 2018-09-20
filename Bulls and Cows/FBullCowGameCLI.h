@@ -3,6 +3,9 @@
 #include "FBullCowGame.h"
 #include "IsogramsDictionary.h"
 
+/**
+ * Terminal client for "Bulls and Cows" game
+ */
 class FBullCowGameCLI
 {
 public:
@@ -15,7 +18,11 @@ private:
 	FIsogramsDictionary Dictionary;
 
 	bool bPlayAgain;
+
 	void PrintIntro();
+	void PrintASCIIArt();
+	void PrintRules();
+
 	void PlayGame();
 	FText GetValidGuess();
 	bool AskToPlayAgain();

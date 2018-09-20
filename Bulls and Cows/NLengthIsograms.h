@@ -3,6 +3,9 @@
 #include <fstream>
 #include <random>
 
+/**
+ * Contains multiple fixed length isograms
+ */
 class FNLengthIsograms
 {
 public:
