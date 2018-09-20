@@ -6,7 +6,7 @@ struct FBullCowCount
 	int32 Bulls = 0, Cows = 0;
 };
 
-enum class EGuessStatus { OK, NotIsogram, WrongLength };
+enum class EGuessStatus { OK, NotIsogram, WrongLength, RepeatingGuess };
 enum class EResetStatus { OK, NoHiddenWord };
 
 class FBullCowGame
@@ -34,6 +34,8 @@ private:
 	int32 MaxTries;
 	bool bGameIsWon;
 	FString HiddenWord;
+	TSet<FString> GuessesTried;
 
 	bool IsIsogram(const FString& Guess) const;
+	FBullCowCount CountBullsAndCows(const FString& Word) const;
 };

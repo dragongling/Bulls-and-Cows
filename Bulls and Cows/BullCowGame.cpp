@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "FBullCowGame.h"
 
+FString ToLower(const FString& Word);
+
 FBullCowGame::FBullCowGame(){ Reset(); }
 
 int32 FBullCowGame::GetMaxTries() const { return MaxTries; }
@@ -14,6 +16,7 @@ void FBullCowGame::Reset()
 	MaxTries = DEFAULT_MAX_TRIES;	
 	HiddenWord = DEFAULT_HIDDEN_WORD;
 	bGameIsWon = false;
+	GuessesTried.clear();
 }
 
 void FBullCowGame::Reset(const FString& NewHiddenWord)
@@ -32,37 +35,20 @@ EGuessStatus FBullCowGame::CheckGuessValidity(const FString& Guess) const
 	{
 		return EGuessStatus::NotIsogram;
 	}
+	if (GuessesTried.find(Guess) != GuessesTried.end())
+	{
+		return EGuessStatus::RepeatingGuess;
+	}
 	return EGuessStatus::OK;
 }
 
 //receives a valid guess, increments turn, returns count
 FBullCowCount FBullCowGame::SubmitValidGuess(const FString& ValidGuess)
 {
-	//increment turn number
 	CurrentTry++;
-	//setup a return variable
-	FBullCowCount BullCowCount;
-	FString LoweredGuess = ValidGuess;
-	//loop through all letters in the guess
-	for (int32 i = 0; i < ValidGuess.length(); ++i)
-	{
-		char LoweredGuessChar = tolower(ValidGuess[i]);
-		if (LoweredGuessChar == HiddenWord[i])
-		{
-			BullCowCount.Bulls++;
-		}
-		else
-		{
-			for (int32 j = 0; j < GetHiddenWordLength(); ++j)
-			{
-				if (LoweredGuessChar == HiddenWord[j])
-				{
-					BullCowCount.Cows++;
-					break;
-				}
-			}
-		}
-	}
+	FString LoweredGuess = ToLower(ValidGuess);
+	GuessesTried.insert(LoweredGuess);
+	FBullCowCount BullCowCount = CountBullsAndCows(LoweredGuess);
 	if (BullCowCount.Bulls == GetHiddenWordLength())
 	{
 		bGameIsWon = true;
@@ -85,4 +71,39 @@ bool FBullCowGame::IsIsogram(const FString& Guess) const
 		}
 	}
 	return true;
+}
+
+FBullCowCount FBullCowGame::CountBullsAndCows(const FString & Word) const
+{
+	FBullCowCount BullCowCount;
+	for (int32 i = 0; i < Word.length(); ++i)
+	{
+		char LoweredGuessChar = tolower(Word[i]);
+		if (Word[i] == HiddenWord[i])
+		{
+			BullCowCount.Bulls++;
+		}
+		else
+		{
+			for (int32 j = 0; j < GetHiddenWordLength(); ++j)
+			{
+				if (Word[i] == HiddenWord[j])
+				{
+					BullCowCount.Cows++;
+					break;
+				}
+			}
+		}
+	}
+	return BullCowCount;
+}
+
+FString ToLower(const FString& String)
+{
+	FString NewString = "";
+	for (const char& c : String)
+	{
+		NewString += tolower(c);
+	}
+	return NewString;
 }

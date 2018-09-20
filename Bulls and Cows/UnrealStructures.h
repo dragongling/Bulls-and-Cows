@@ -1,9 +1,15 @@
 #pragma once
+
+using int32 = int;
+
 #include <string>
-#include <set>
-
-#define TSet std::set
-
 using FText = std::string;
 using FString = std::string;
-using int32 = int;
+
+
+
+#include <set>
+#define TSet std::set
+
+//#include <vector>
+//#define TArray std::vector

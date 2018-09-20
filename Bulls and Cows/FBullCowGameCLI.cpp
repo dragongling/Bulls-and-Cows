@@ -20,6 +20,14 @@ void FBullCowGameCLI::StartMainGameLoop()
 void FBullCowGameCLI::PrintIntro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game!\n";
+	std::cout << std::endl;
+	std::cout << "          }   {         ___ " << std::endl;
+	std::cout << "          (o o)        (o o) " << std::endl;
+	std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
+	std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
+	std::cout << " *  |-,--- |              |------|  * " << std::endl;
+	std::cout << "    ^      ^              ^      ^ " << std::endl;
+	std::cout << std::endl;
 }
 
 void FBullCowGameCLI::PlayGame()
@@ -51,6 +59,9 @@ FText FBullCowGameCLI::GetValidGuess()
 			break;
 		case EGuessStatus::WrongLength:
 			std::cout << "\nWord should contain " << BCGame.GetHiddenWordLength() << " letters";
+			break;
+		case EGuessStatus::RepeatingGuess:
+			std::cout << "\nYou already tried that word";
 			break;
 		default:
 			return Guess;
