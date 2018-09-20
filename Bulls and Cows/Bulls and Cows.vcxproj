@@ -149,7 +149,8 @@
   <ItemGroup>
     <ClInclude Include="FBullCowGame.h" />
     <ClInclude Include="FBullCowGameCLI.h" />
-    <ClInclude Include="FWordsDictionary.h" />
+    <ClInclude Include="IsogramsDictionary.h" />
+    <ClInclude Include="NLengthIsograms.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UnrealStructures.h" />
@@ -157,7 +158,8 @@
   <ItemGroup>
     <ClCompile Include="BullCowGame.cpp" />
     <ClCompile Include="FBullCowGameCLI.cpp" />
-    <ClCompile Include="FWordsDictionary.cpp" />
+    <ClCompile Include="IsogramsDictionary.cpp" />
+    <ClCompile Include="NLengthIsograms.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

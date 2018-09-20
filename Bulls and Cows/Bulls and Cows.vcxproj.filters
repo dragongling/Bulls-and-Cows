@@ -30,7 +30,10 @@
     <ClInclude Include="UnrealStructures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FWordsDictionary.h">
+    <ClInclude Include="NLengthIsograms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IsogramsDictionary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,7 +50,10 @@
     <ClCompile Include="FBullCowGameCLI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FWordsDictionary.cpp">
+    <ClCompile Include="NLengthIsograms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IsogramsDictionary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

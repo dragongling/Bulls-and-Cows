@@ -21,18 +21,22 @@ void FBullCowGameCLI::PrintIntro()
 {
 	std::cout << "Welcome to Bulls and Cows, a fun word game!\n";
 	std::cout << std::endl;
-	std::cout << "          }   {         ___ " << std::endl;
-	std::cout << "          (o o)        (o o) " << std::endl;
-	std::cout << "   /-------\\ /          \\ /-------\\ " << std::endl;
-	std::cout << "  / | BULL |O            O| COW  | \\ " << std::endl;
-	std::cout << " *  |-,--- |              |------|  * " << std::endl;
-	std::cout << "    ^      ^              ^      ^ " << std::endl;
-	std::cout << std::endl;
+	std::cout << 
+		"          }   {         ___            \n"
+		"          (o o)        (o o)           \n"
+		"   /-------\\ /          \\ /-------\\ \n"
+		"  / | BULL |O            O| COW  | \\  \n"
+		" *  |-,--- |              |------|  *  \n"
+		"    ^      ^              ^      ^     \n"
+		<< std::endl;
 }
 
 void FBullCowGameCLI::PlayGame()
 {
-	HiddenWord = Dictionary.GetRandomWord();
+	std::random_device rd;
+	std::default_random_engine re(rd());
+	HiddenWord = Dictionary.GetRandomWord(re, 7);
+	std::cout << HiddenWord << std::endl;
 	BCGame.Reset(HiddenWord);
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n" << std::endl;
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= BCGame.GetMaxTries())

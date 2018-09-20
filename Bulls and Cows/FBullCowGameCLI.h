@@ -1,7 +1,7 @@
 #pragma once
 #include "UnrealStructures.h"
 #include "FBullCowGame.h"
-#include "FWordsDictionary.h"
+#include "IsogramsDictionary.h"
 
 class FBullCowGameCLI
 {
@@ -12,7 +12,7 @@ private:
 
 	FString HiddenWord;
 	FBullCowGame BCGame;
-	FWordsDictionary Dictionary;
+	FIsogramsDictionary Dictionary;
 
 	bool bPlayAgain;
 	void PrintIntro();
