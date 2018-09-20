@@ -17,23 +17,28 @@ enum class EResetStatus { OK, NoHiddenWord };
 class FBullCowGame
 {
 public:
+	static const int32 DEFAULT_MAX_TRIES = 3;
+	const FString DEFAULT_HIDDEN_WORD = "planet";
+
 	FBullCowGame();
 
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
-
 	bool IsGameWon() const;
-	EGuessStatus CheckGuessValidity(FString guess) const; //TODO make a more rich return value
+	EGuessStatus CheckGuessValidity(const FString& Guess) const;
 
-	void Reset(); //TODO make a more rich return value
-	//counts bulls & cows, increases try # assuming valid guess
-	FBullCowCount SubmitValidGuess(const FString&);
+	void Reset();
+	void Reset(const FString& NewHiddenWord);
+
+	//counts bulls & cows, increases try #
+	FBullCowCount SubmitValidGuess(const FString& ValidGuess);
 
 private:
-	int32 MyCurrentTry;
-	int32 MyMaxTries;
-	bool IsIsogram(FString word) const;
+	int32 CurrentTry;
+	int32 MaxTries;
 	bool bGameIsWon;
-	FString MyHiddenWord;
+	FString HiddenWord;
+
+	bool IsIsogram(const FString& Guess) const;
 };
