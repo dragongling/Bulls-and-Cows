@@ -12,7 +12,7 @@ enum class EResetStatus { OK, NoHiddenWord };
 class FBullCowGame
 {
 public:
-	static const int32 DEFAULT_MAX_TRIES = 3;
+	static const int32 DEFAULT_MAX_TRIES = 8;
 	const FString DEFAULT_HIDDEN_WORD = "planet";
 
 	FBullCowGame();

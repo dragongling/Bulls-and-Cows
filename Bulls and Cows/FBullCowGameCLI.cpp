@@ -5,6 +5,11 @@ void FBullCowGameCLI::StartMainGameLoop()
 {
 	bPlayAgain = false;
 	//TODO::Read words file
+	if (!Dictionary.ReadFromFile(DICTIONARY_PATH))
+	{
+		std::cout << "Error: file \"" << DICTIONARY_PATH << "\" not found." << std::endl;
+		return;
+	}
 	do {
 		PrintIntro();
 		PlayGame();
@@ -14,13 +19,14 @@ void FBullCowGameCLI::StartMainGameLoop()
 
 void FBullCowGameCLI::PrintIntro()
 {
-	std::cout << "Welcome to Bulls and Cows, a fun word game!\n"
-		<< "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n" << std::endl;
+	std::cout << "Welcome to Bulls and Cows, a fun word game!\n";
 }
 
 void FBullCowGameCLI::PlayGame()
 {
-	BCGame.Reset("fusion");
+	HiddenWord = Dictionary.GetRandomWord();
+	BCGame.Reset(HiddenWord);
+	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n" << std::endl;
 	while (!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= BCGame.GetMaxTries())
 	{
 		FText ValidGuess = GetValidGuess();
@@ -70,6 +76,6 @@ void FBullCowGameCLI::PrintGameSummary()
 	}
 	else
 	{
-		std::cout << "Better luck next time!\n" << std::endl;
+		std::cout << "The word was \"" << HiddenWord << "\". Better luck next time!\n" << std::endl;
 	}
 }
