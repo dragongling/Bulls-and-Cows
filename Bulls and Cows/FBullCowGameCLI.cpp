@@ -14,28 +14,16 @@ void FBullCowGameCLI::StartMainGameLoop()
 		PlayGame();
 		bPlayAgain = AskToPlayAgain();
 	} while (bPlayAgain);
+	PrintOutro();
 }
 
 void FBullCowGameCLI::PrintIntro()
 {
+	std::cout << IntroArt.GetArt() << std::endl;
 	std::cout << "Welcome to Bulls and Cows, a fun word game!\n";
-	std::cout << std::endl;
-	PrintASCIIArt();
 	std::cout << std::endl;
 	PrintRules();
 	std::cout << std::endl;
-}
-
-void FBullCowGameCLI::PrintASCIIArt()
-{
-	std::cout <<
-		"          }   {         ___            \n"
-		"          (o o)        (o o)           \n"
-		"   /-------\\ /          \\ /-------\\ \n"
-		"  / | BULL |O            O| COW  | \\  \n"
-		" *  |-,--- |              |------|  *  \n"
-		"    ^      ^              ^      ^     "
-		<< std::endl;
 }
 
 void FBullCowGameCLI::PrintRules()
@@ -47,11 +35,21 @@ void FBullCowGameCLI::PrintRules()
 		<< std::endl;
 }
 
+void FBullCowGameCLI::PrintOutro() const
+{
+	std::cout << 
+		"Thank you for playing the game!"
+		"\nArt by " << IntroArt.GetAuthors() <<
+		"\nCode by Alexander Slesarenko © 2018" 
+		<< std::endl;
+}
+
 void FBullCowGameCLI::PlayGame()
 {
 	std::random_device rd;
 	std::default_random_engine re(rd());
-	HiddenWord = Dictionary.GetRandomWord(re, 4);
+	int32 WordLength = ChooseWordLength();
+	HiddenWord = Dictionary.GetRandomWord(re, WordLength);
 	//std::cout << HiddenWord << std::endl; // Debugging only
 	BCGame.Reset(HiddenWord);
 	std::cout << "Can you guess the " << BCGame.GetHiddenWordLength() << " letter isogram I'm thinking of?\n" << std::endl;
@@ -62,6 +60,23 @@ void FBullCowGameCLI::PlayGame()
 		std::cout << "\nBulls = " << BullCowCount.Bulls << ", Cows = " << BullCowCount.Cows << std::endl << std::endl;
 	}
 	PrintGameSummary();
+}
+
+int32 FBullCowGameCLI::ChooseWordLength()
+{
+	int32 WordLength = 0;
+	do
+	{
+		std::cout << "Choose word length (4-7): ";
+		FString Line;
+		std::getline(std::cin, Line);
+		try 
+		{
+			WordLength = std::stoi(Line);
+		}
+		catch (std::invalid_argument e) {}
+	} while (WordLength < 4 || WordLength > 7);
+	return WordLength;
 }
 
 FText FBullCowGameCLI::GetValidGuess()

@@ -15,8 +15,8 @@ enum class EResetStatus { OK, NoHiddenWord };
 class FBullCowGame
 {
 public:
-	static const int32 DEFAULT_MAX_TRIES = 8;
 	const FString DEFAULT_HIDDEN_WORD = "planet";
+	const int32 WordLengthToMaxTries[4]{ 7,10,16,20 };
 
 	FBullCowGame();
 
@@ -34,7 +34,6 @@ public:
 
 private:
 	int32 CurrentTry;
-	int32 MaxTries;
 	bool bGameIsWon;
 	FString HiddenWord;
 	TSet<FString> GuessesTried;

@@ -5,7 +5,11 @@ FString ToLower(const FString& Word);
 
 FBullCowGame::FBullCowGame(){ Reset(); }
 
-int32 FBullCowGame::GetMaxTries() const { return MaxTries; }
+int32 FBullCowGame::GetMaxTries() const 
+{
+	return WordLengthToMaxTries[GetHiddenWordLength() - 4];
+}
+
 int32 FBullCowGame::GetCurrentTry() const { return CurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return HiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
@@ -13,7 +17,6 @@ bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 void FBullCowGame::Reset()
 {
 	CurrentTry = 1;
-	MaxTries = DEFAULT_MAX_TRIES;	
 	HiddenWord = DEFAULT_HIDDEN_WORD;
 	bGameIsWon = false;
 	GuessesTried.clear();
