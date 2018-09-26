@@ -87,5 +87,9 @@ def get_isograms(words_table, origin_filters):
 
 
 directory = 'data/yougowords.com/Tables/'
-file_path = directory + str(7) + '.csv'
-print('\n'.join(sorted(get_isograms(read_csv(file_path), {'Middle English'}))))
+word_length = 7
+dict_path = 'data/dictionary.txt'
+with open(dict_path, 'w') as file:
+    for word_length in range(4,8):
+        file_path = directory + str(word_length) + '.csv'
+        file.write(''.join(sorted(get_isograms(read_csv(file_path), {'Middle English'}))) + '\n')
