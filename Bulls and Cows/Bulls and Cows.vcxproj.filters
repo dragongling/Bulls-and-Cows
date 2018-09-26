@@ -69,4 +69,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="ASCIIArt.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="dictionary.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
