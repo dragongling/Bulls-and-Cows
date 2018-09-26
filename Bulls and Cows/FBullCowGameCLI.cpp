@@ -9,6 +9,11 @@ void FBullCowGameCLI::StartMainGameLoop()
 		std::cout << "Error: file \"" << DICTIONARY_PATH << "\" not found." << std::endl;
 		return;
 	}
+	FASCIILibrary IntroArtLibrary;
+	IntroArtLibrary.ReadFromFile("ASCIIArt.txt");
+	std::random_device rd;
+	std::default_random_engine re(rd());
+	IntroArt = IntroArtLibrary.GetRandomArt(re);
 	PrintIntro();
 	do {		
 		PlayGame();
@@ -40,7 +45,7 @@ void FBullCowGameCLI::PrintOutro() const
 	std::cout << 
 		"Thank you for playing the game!"
 		"\nArt by " << IntroArt.GetAuthors() <<
-		"\nCode by Alexander Slesarenko © 2018" 
+		"\nCode by Alexander Slesarenko, 2018" 
 		<< std::endl;
 }
 

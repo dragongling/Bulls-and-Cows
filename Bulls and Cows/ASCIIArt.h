@@ -9,7 +9,6 @@ public:
 	const FString& GetAuthors() const;
 	const FString& GetArt() const;
 private:
-	int32 height, width;
 	FString Art;
 	FString Authors;
 };

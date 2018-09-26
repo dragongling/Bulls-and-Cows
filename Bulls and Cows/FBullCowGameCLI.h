@@ -3,6 +3,7 @@
 #include "FBullCowGame.h"
 #include "IsogramsDictionary.h"
 #include "ASCIIArt.h"
+#include "ASCIILibrary.h"
 
 /**
  * Terminal client for "Bulls and Cows" game
@@ -17,7 +18,7 @@ private:
 	FString HiddenWord;
 	FBullCowGame BCGame;
 	FIsogramsDictionary Dictionary;
-	const FASCIIArt IntroArt{ R"(
+	FASCIIArt IntroArt{ R"(
           }   {         ___
           (o o)        (o o)
    /-------\ /          \ /-------\

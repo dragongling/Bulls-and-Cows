@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ASCIIArt.h" />
+    <ClInclude Include="ASCIILibrary.h" />
     <ClInclude Include="FBullCowGame.h" />
     <ClInclude Include="FBullCowGameCLI.h" />
     <ClInclude Include="IsogramsDictionary.h" />
@@ -158,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ASCIIArt.cpp" />
+    <ClCompile Include="ASCIILibrary.cpp" />
     <ClCompile Include="BullCowGame.cpp" />
     <ClCompile Include="FBullCowGameCLI.cpp" />
     <ClCompile Include="IsogramsDictionary.cpp" />
