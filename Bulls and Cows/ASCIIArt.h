@@ -5,10 +5,11 @@ class FASCIIArt
 {
 public:
 	FASCIIArt(const FString& Art, const FString& Authors);
+	FASCIIArt(const TArray<FString> Art, const FString& Authors);
 
 	const FString& GetAuthors() const;
-	const FString& GetArt() const;
+	const FString GetArt() const;
 private:
-	FString Art;
+	TArray<FString> Art;
 	FString Authors;
 };

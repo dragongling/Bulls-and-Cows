@@ -187,6 +187,7 @@ copy "$(ProjectDir)ASCIIArt.txt" "$(OutDir)"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UnrealStructures.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ASCIIArt.txt">

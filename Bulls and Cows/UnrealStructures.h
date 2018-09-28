@@ -15,3 +15,9 @@ using FString = std::string;
 
 #include <map>
 #define TMap std::map
+
+#include <sstream>
+
+TArray<FString> ParseIntoArray(FString s, const FString& delimiter);
+
+FString Join(TArray<FString> Array, FString separator);

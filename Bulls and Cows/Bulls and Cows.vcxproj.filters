@@ -68,6 +68,9 @@
     <ClCompile Include="ASCIILibrary.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UnrealStructures.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ASCIIArt.txt">

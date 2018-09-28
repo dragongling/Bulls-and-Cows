@@ -9,14 +9,15 @@ bool FASCIILibrary::ReadFromFile(const FString & FilePath)
 	if (!File.is_open())
 		return false;
 	while (!File.eof()) {
-		FString Line, Author, CurrentArt;
+		FString Line, Author;
+		TArray<FString> CurrentArt;
 		std::getline(File, Line);
 		int32 ASCIIHeight = std::stoi(Line);
 		std::getline(File, Author);
 		for (int32 i = 0; i < ASCIIHeight; ++i) 
 		{
 			std::getline(File, Line);
-			CurrentArt += Line + "\n";
+			CurrentArt.push_back(Line);
 		}
 		Art.push_back(FASCIIArt{ CurrentArt, Author });
 	}
