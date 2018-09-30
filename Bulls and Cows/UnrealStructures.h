@@ -21,3 +21,5 @@ using FString = std::string;
 TArray<FString> ParseIntoArray(FString s, const FString& delimiter);
 
 FString Join(TArray<FString> Array, FString separator);
+
+FString Repeat(const FString& String, const int32& Count);

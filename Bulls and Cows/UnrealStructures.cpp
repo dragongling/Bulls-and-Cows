@@ -23,3 +23,10 @@ FString Join(TArray<FString> Array, FString separator)
 	}
 	return std::string(ss.str());
 }
+
+FString Repeat(const FString& String, const int32& Count) {
+	std::ostringstream OutputStream;
+	for (int32 i = 0; i < Count; i++)
+		OutputStream << String;
+	return OutputStream.str();
+}
